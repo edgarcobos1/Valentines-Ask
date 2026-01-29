@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Valentine?</title>
+    <style> 
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+        .button-container { margin-top: 20px; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer;}
+        #yes-content {display: none;}
+        #no-btn {top: 14.95%; left: 55%; position: absolute;}
+        html {background-image: url("pics/heartspic.avif"); background-size: cover;
+        background-position: center; background-attachment: fixed; background-repeat:no-repeat;
+        height: 100%;}
+        #us-pic {width: 300px; border-radius: 15px; border: 5px solid white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3); margin-top: 20px;}
+    </style>
+</head>
+
+<body>
+    <div id="main-content">
+        <h1>Hi there Heaven, will you be my Valentine?</h1>
+        <div class="button-container">
+            <button onclick="handleYes()">Yes</button>
+            <button id="no-btn"onmouseover="moveNo()">No</button>
+        </div>
+    </div>
+
+    <div id="yes-content">
+        <h1> Hip Hip Hooray! Good choice m'lady ;) see you on the 14th!</h1>
+        <img id ="us-pic" src = "pics/selfie.jpg" alt = "picture of us">
+    </div>
+
+    <script>
+        //        J S
+        // get elements from html
+        const yes = document.getElementById("yes-content")
+        const no = document.getElementById("no-content");
+        const main = document.getElementById("main-content");
+
+        let currentScale = 1.0;
+
+        // function handles yes
+        function handleYes() {
+            document.getElementById("main-content").style.display = "none";
+            document.getElementById("yes-content").style.display = "block";
+        }
+
+        // function handles no
+        function moveNo () {
+            const btn = document.getElementById("no-btn");
+
+            const newX = (Math.random() * (window.innerWidth - btn.offsetWidth)) +'px';
+            const newY = (Math.random() * (window.innerHeight - btn.offsetHeight)) +'px';
+        
+            btn.style.left = newX
+            btn.style.top = newY
+
+            currentScale -= 0.1;
+            btn.style.transform = "scale(" + currentScale + ")";
+
+            if (currentScale <= 0.2) {
+                btn.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+
